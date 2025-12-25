@@ -1,9 +1,9 @@
 #!/usr/bin/env bash
 echo "Welcome, adventurer!"
-usage="${0##*/}
+usage="${0##*/}"
 tmux setenv '@PLUG_ROOT' "$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 $PLUG_ROOT="$(tmux display -p "#{@PLUG_ROOT}")"
 $ICONS="$(tmux display -p "#{@LIB_ICON}")"
 tmux display -p "$usage"
-. $PLUG_ROOT/scripts/tmux-metaphile.sh
+$PLUG_ROOT/scripts/tmux-metaphile.sh
 tmux bind M-m run "$PLUG_ROOT/scripts/tmux-metaphile.sh"
