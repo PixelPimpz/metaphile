@@ -6,4 +6,4 @@ $PLUG_ROOT="$(tmux display -p "#{@PLUG_ROOT}")"
 $ICONS="$(tmux display -p "#{@LIB_ICON}")"
 tmux display -p "$usage"
 $PLUG_ROOT/scripts/tmux-metaphile.sh
-tmux bind M-m run "$PLUG_ROOT/scripts/tmux-metaphile.sh"
+tmux bind M-m run "$PLUG_ROOT/tmux-metaphile.tmux"
