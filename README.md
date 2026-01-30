@@ -1,4 +1,4 @@
-# Welcome to tmux-metaphile
+# Welcome to metaphile a context based info unit for the tmux status bar
 ## NeoVIM and TMUX tools for metadata communication
 
 ### Introduction
