@@ -1,5 +1,4 @@
 #!/usr/bin/env bash
-echo "Welcome, adventurer!"
 LOCAL_ROOT="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 tmux set -g '@METAPHILEROOT' "$LOCAL_ROOT"
 ICONS="$(tmux show -gqv @ICONS)"
