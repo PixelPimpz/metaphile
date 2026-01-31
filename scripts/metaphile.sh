@@ -21,7 +21,19 @@ main()
 {
   dump ">>> metaphile.sh running..."
   local PANE_PID=$(tmux display -p "#{pane_pid}")
+  local SOCKET="/tmp/$(ls /tmp | grep -E "${PANE_PID}")"
+  local CHILD_PROC="$(ps -o comm= --ppid "${PANE_PID}")"
+  local PARENT_PROC="$(ps -q "${PANE_PID}" o comm=)"
+
+  report
+}
+
+report()
+{
   dump ">> PANE_PID: $PANE_PID"
+  dump ">> SOCKET: $SOCKET"  
+  dump ">> CHILD_PROC: $CHILD_PROC"  
+  dump ">> PARENT_PROC: $PARENT_PROC"  
 }
 
 main
