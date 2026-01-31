@@ -10,7 +10,7 @@
 # icon in section 1.1 and the NeoVim logo icon + the file name in section 1.2
 # add completed sections to somewhere
 # -----------------------------------------------------------------------------
-LOCAL_ROOT="$( tmux show -gqv pane-current-path )
+LOCAL_ROOT="$( tmux show -gqv pane_current_path )"
 SHARE=$( tmux show -gqv @CHER )
 source "$SHARE/dump.fun"
 source "$SHARE/fatal.fun"
