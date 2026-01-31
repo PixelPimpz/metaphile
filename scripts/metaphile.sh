@@ -20,7 +20,8 @@ source "$SHARE/yaml2item.fun"
 main()
 {
   dump ">>> metaphile.sh running..."
-
+  local PANE_PID=$(tmux display -p "#{pane_pid}")
+  dump ">> PANE_PID: $PANE_PID"
 }
 
 main
