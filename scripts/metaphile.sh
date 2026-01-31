@@ -11,7 +11,7 @@
 # add completed sections to somewhere
 # -----------------------------------------------------------------------------
 LOCAL_ROOT="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
-LOCAL_ROOT="${LOCAL_ROOT%/*}
+LOCAL_ROOT="${LOCAL_ROOT%/*}"
 SHARE=$( tmux show -gqv @CHER )
 source "$SHARE/dump.fun"
 source "$SHARE/fatal.fun"
