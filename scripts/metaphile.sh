@@ -15,5 +15,12 @@ LOCAL_ROOT="${LOCAL_ROOT%/*}"
 SHARE=$( tmux show -gqv @CHER )
 source "$SHARE/dump.fun"
 source "$SHARE/fatal.fun"
-dump ">>> metaphile.sh running..."
-dump ">> $LOCAL_ROOT"
+source "$SHARE/yaml2item.fun"
+
+main()
+{
+  dump ">>> metaphile.sh running..."
+
+}
+
+main
