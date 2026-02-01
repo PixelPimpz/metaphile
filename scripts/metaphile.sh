@@ -44,7 +44,7 @@ report()
   dump ">> CHILD_PROC: $CHILD_PROC"  
   dump ">> PARENT_PROC: $PARENT_PROC"  
   dump ">> ICON: $ICON"
-  dump ">> BUF_NAME: $BUF_NAME":w
+  dump ">> BUF_NAME: $BUF_NAME"
 }
 
 main
