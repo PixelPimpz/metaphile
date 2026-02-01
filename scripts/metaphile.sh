@@ -26,14 +26,15 @@ main()
   local PARENT_PROC="$(ps -q "${PANE_PID}" o comm=)"
 
   if [[ "${SOCKET}" =~ ${PANE_PID} ]]; then # /tmp/nvim-XXXXX = nvim ... /tmp/ = no nvim socket 
-    local ICON="$( yaml2item ".icons.apps.${CHILD_PROC}" $ICONS )"
+    local ICON="$( yaml2item ".icons.app.${CHILD_PROC}" $ICONS )"
     local BUF_NAME="$( nvim --server ${SOCKET} --remote-expr 'expand("%:t")' )"
   else
-    local ICON="$( yaml2item ".icons.apps.${PARENT_PROC}" $ICONS )"
+    local ICON="$( yaml2item ".icons.app.${PARENT_PROC}" $ICONS )"
     local BUF_NAME="${PARENT_PROC}"
     local SOCKET="none"
   fi
   local STATUS="${ICON} ${BUF_NAME}"
+  
   report
 }
 
