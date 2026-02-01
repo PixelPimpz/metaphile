@@ -13,6 +13,7 @@
 LOCAL_ROOT="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 LOCAL_ROOT="${LOCAL_ROOT%/*}"
 SHARE=$( tmux show -gqv @CHER )
+ICONS=$( tmux show -gqv @ICONS )
 source "$SHARE/dump.fun"
 source "$SHARE/fatal.fun"
 source "$SHARE/yaml2item.fun"
@@ -34,12 +35,14 @@ main()
     local SOCKET="none"
   fi
   local STATUS="${ICON} ${BUF_NAME}"
-  
+
+  tmux set -g '@MF_NAME' "$STATUS"
   report
 }
 
 report()
 {
+  dump ">> ICONS: $ICONS"
   dump ">> PANE_PID: $PANE_PID"
   dump ">> SOCKET: $SOCKET"  
   dump ">> CHILD_PROC: $CHILD_PROC"  
