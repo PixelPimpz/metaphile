@@ -26,7 +26,6 @@ main()
 
 mf_name()
 {
-  dump ">>> metaphile.sh running..."
   local PANE_PID=$(tmux display -p "#{pane_pid}")
   local SOCKET="/tmp/$(ls /tmp | grep -E "${PANE_PID}")"
   local CHILD_PROC="$(ps -o comm= --ppid "${PANE_PID}")"
