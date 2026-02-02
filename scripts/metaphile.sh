@@ -47,7 +47,7 @@ report()
   dump ">> SOCKET: $SOCKET"  
   dump ">> CHILD_PROC: $CHILD_PROC"  
   dump ">> PARENT_PROC: $PARENT_PROC"  
-  dump ">> ICON: $ICON"
+  dump ">> ICON: #[fg:@orange_b]$ICON"
   dump ">> BUF_NAME: $BUF_NAME"
 }
 
