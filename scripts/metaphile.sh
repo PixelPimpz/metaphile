@@ -30,7 +30,7 @@ main()
     local ICON="$( yaml2item ".icons.sys.Document" $ICONS )"
     local BUF_NAME="$( nvim --server ${SOCKET} --remote-expr 'expand("%:t")' )"
   else
-    local ICON="$( yaml2item ".icons.app.Folder" $ICONS )"
+    local ICON="$( yaml2item ".icons.app.$PARENT_PROC" $ICONS )"
     local BUF_NAME="${PARENT_PROC}"
     local SOCKET="none"
   fi
