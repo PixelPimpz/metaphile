@@ -21,7 +21,6 @@ source "$SHARE/yaml2item.fun"
 main()
 {
   tmux set -g '@MF_NAME' "$(mf_name)"
-  report
 }
 
 mf_name()
@@ -40,8 +39,8 @@ mf_name()
     local SOCKET="none"
   fi
   local STATUS="${ICON} ${BUF_NAME}"
-
   echo "$STATUS"
+  report
 }
 
 report()
