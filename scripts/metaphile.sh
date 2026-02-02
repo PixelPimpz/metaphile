@@ -20,6 +20,12 @@ source "$SHARE/yaml2item.fun"
 
 main()
 {
+  tmux set -g '@MF_NAME' "$(mf_name)"
+  report
+}
+
+mf_name()
+{
   dump ">>> metaphile.sh running..."
   local PANE_PID=$(tmux display -p "#{pane_pid}")
   local SOCKET="/tmp/$(ls /tmp | grep -E "${PANE_PID}")"
@@ -36,8 +42,7 @@ main()
   fi
   local STATUS="${ICON} ${BUF_NAME}"
 
-  tmux set -g '@MF_NAME' "$STATUS"
-  report
+  echo "$STATUS"
 }
 
 report()
