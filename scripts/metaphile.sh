@@ -36,10 +36,8 @@ mf_name()
   else
     local ICON="$( yaml2item ".icons.app.$PARENT_PROC" $ICONS )"
     local BUF_NAME="${PARENT_PROC}"
-    local SOCKET="none"
   fi
-  local STATUS="${ICON} ${BUF_NAME}"
-  echo "$STATUS"
+  echo "${ICON} ${BUF_NAME}"
 }
 
 report()
