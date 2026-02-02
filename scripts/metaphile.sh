@@ -21,6 +21,13 @@ source "$SHARE/yaml2item.fun"
 main()
 {
   tmux set -g '@MF_NAME' "$(mf_name)"
+  tmux set -g '@MF_GIT' "$(mf_git)"
+}
+
+mf_git()
+{
+  local ICON=$(yaml2item ".icons.app.gh" $ICONS )
+  echo "${ICON} author/plugin"
 }
 
 mf_name()
@@ -38,17 +45,6 @@ mf_name()
   fi
 
   echo "${ICON} ${BUF_NAME}"
-}
-
-report()
-{
-  dump ">> ICONS: $ICONS"
-  dump ">> PANE_PID: $PANE_PID"
-  dump ">> SOCKET: $SOCKET"  
-  dump ">> CHILD_PROC: $CHILD_PROC"  
-  dump ">> PARENT_PROC: $PARENT_PROC"  
-  dump ">> ICON: $ICON"
-  dump ">> BUF_NAME: $BUF_NAME"
 }
 
 main
