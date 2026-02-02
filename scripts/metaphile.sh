@@ -27,7 +27,7 @@ mf_name()
 {
   local PANE_PID=$(tmux display -p "#{pane_pid}")
   local SOCKET="/tmp/$(ls /tmp | grep -E "${PANE_PID}")"
-  local CHILD_PROC="$(ps -o comm= --ppid "${PANE_PID}")"
+#  local CHILD_PROC="$(ps -o comm= --ppid "${PANE_PID}")"
   local PARENT_PROC="$(ps -q "${PANE_PID}" o comm=)"
 
   if [[ "${SOCKET}" =~ ${PANE_PID} ]]; then # /tmp/nvim-XXXXX = nvim ... /tmp/ = no nvim socket 
