@@ -27,7 +27,6 @@ mf_name()
 {
   local PANE_PID=$(tmux display -p "#{pane_pid}")
   local SOCKET="/tmp/$(ls /tmp | grep -E "${PANE_PID}")"
-#  local CHILD_PROC="$(ps -o comm= --ppid "${PANE_PID}")"
   local PARENT_PROC="$(ps -q "${PANE_PID}" o comm=)"
 
   if [[ "${SOCKET}" =~ ${PANE_PID} ]]; then # /tmp/nvim-XXXXX = nvim ... /tmp/ = no nvim socket 
@@ -37,6 +36,7 @@ mf_name()
     local ICON="$( yaml2item ".icons.app.$PARENT_PROC" $ICONS )"
     local BUF_NAME="${PARENT_PROC}"
   fi
+
   echo "${ICON} ${BUF_NAME}"
 }
 
