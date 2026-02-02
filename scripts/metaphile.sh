@@ -40,7 +40,6 @@ mf_name()
   fi
   local STATUS="${ICON} ${BUF_NAME}"
   echo "$STATUS"
-  report
 }
 
 report()
