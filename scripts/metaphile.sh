@@ -22,8 +22,7 @@ main()
 {
   tmux set -g '@MF_NAME' "$(mf_name)"
   tmux set -g '@MF_GIT' "$(mf_git)"
-  tmux display -p "#{pane_path}"
-  ps -q $(tmux display -p "#{pane_pid}") o comm=
+  ps -l $(tmux display -p "#{pane_pid}")
 }
 
 mf_git()
