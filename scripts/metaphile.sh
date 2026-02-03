@@ -18,11 +18,11 @@ source "$SHARE/dump.fun"
 source "$SHARE/fatal.fun"
 source "$SHARE/yaml2item.fun"
 
-
 main()
 {
   tmux set -g '@MF_NAME' "$(mf_name)"
   tmux set -g '@MF_GIT' "$(mf_git)"
+  dump ">> #{pane-current-path}"
 }
 
 mf_git()
