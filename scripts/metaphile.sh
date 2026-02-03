@@ -21,8 +21,9 @@ source "$SHARE/yaml2item.fun"
 
 main()
 {
-  read -r -a mf_path_array <<< "$(mf_path)"
-  tmux set -g '@MF_NAME' "${mf_path_array[3]}"
+  read -a mf_path_array <<< "$(mf_path)"
+
+  tmux set -g '@MF_NAME' "${mf_path_array[0]}"
   tmux set -g '@MF_GIT' "$(mf_git)"
 }
  
