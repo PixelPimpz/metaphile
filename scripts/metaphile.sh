@@ -14,6 +14,7 @@ LOCAL_ROOT="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 LOCAL_ROOT="${LOCAL_ROOT%/*}"
 SHARE=$( tmux show -gqv @CHER )
 ICONS=$( tmux show -gqv @ICONS )
+FPATH=
 source "$SHARE/dump.fun"
 source "$SHARE/fatal.fun"
 source "$SHARE/yaml2item.fun"
@@ -22,7 +23,7 @@ main()
 {
   tmux set -g '@MF_NAME' "$(mf_name)"
   tmux set -g '@MF_GIT' "$(mf_git)"
-  ps -l $(tmux display -p "#{pane_pid}")
+  dump ">> $FPATH"
 }
 
 mf_git()
@@ -38,8 +39,8 @@ mf_name()
   local PARENT_PROC="$(ps -q "${PANE_PID}" o comm=)"
 
   if [[ "${SOCKET}" =~ ${PANE_PID} ]]; then # /tmp/nvim-XXXXX = nvim ... /tmp/ = no nvim socket 
+    FPATH="$( nvim --server ${SOCKET} --remote-expr 'expand("%")' )"
     local ICON="$( yaml2item ".icons.sys.Document" $ICONS )"
-    local FPATH="$( nvim --server ${SOCKET} --remote-expr 'expand("%")' )"
     local FNAME="${FPATH##*/}"
   else
     local ICON="$( yaml2item ".icons.app.$PARENT_PROC" $ICONS )"
