@@ -38,8 +38,7 @@ mf_name()
   local PARENT_PROC="$(ps -q "${PANE_PID}" o comm=)"
 
   if [[ "${SOCKET}" =~ ${PANE_PID} ]]; then # /tmp/nvim-XXXXX = nvim ... /tmp/ = no nvim socket 
-    FPATH="$( nvim --server ${SOCKET} --remote-expr 'expand("%")' )"
-    dump ">> $FPATH"
+    local FPATH="$( nvim --server ${SOCKET} --remote-expr 'expand("%")' )"
     local ICON="$( yaml2item ".icons.sys.Document" $ICONS )"
     local FNAME="${FPATH##*/}"
   else
