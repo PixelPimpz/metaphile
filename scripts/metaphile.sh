@@ -22,7 +22,7 @@ main()
 {
   tmux set -g '@MF_NAME' "$(mf_name)"
   tmux set -g '@MF_GIT' "$(mf_git)"
-  dump ">> #{pane-path}"
+  dump ">> pane_pid:  #{pane-pid}"
 }
 
 mf_git()
