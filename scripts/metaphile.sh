@@ -39,13 +39,14 @@ mf_name()
 
   if [[ "${SOCKET}" =~ ${PANE_PID} ]]; then # /tmp/nvim-XXXXX = nvim ... /tmp/ = no nvim socket 
     local ICON="$( yaml2item ".icons.sys.Document" $ICONS )"
-    local BUF_NAME="$( nvim --server ${SOCKET} --remote-expr 'expand("%:t")' )"
+    local FPATH="$( nvim --server ${SOCKET} --remote-expr 'expand("%")' )"
+    local FNAME="${BUF_NAME%%/* }"
   else
     local ICON="$( yaml2item ".icons.app.$PARENT_PROC" $ICONS )"
-    local BUF_NAME="${PARENT_PROC}"
+    local FNAME="${PARENT_PROC}"
   fi
 
-  echo "${ICON} ${BUF_NAME}"
+  echo "${ICON} ${FNAME}"
 }
 
 main
