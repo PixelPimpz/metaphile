@@ -13,5 +13,5 @@ mf_name()
     local BUF_NAME="${PARENT_PROC}"
   fi
 
-  echo "${ICON} ${BUF_NAME}"
+  echo ">>> ${ICON} ${BUF_NAME}"
 }
