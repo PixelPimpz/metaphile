@@ -21,9 +21,8 @@ source "$SHARE/yaml2item.fun"
 
 main()
 {
-  local mf_name_result="$(mf_name)"
-  local name="${mf_name_result##*/}"
-  tmux set -g '@MF_NAME' "$name"
+  read -r -a mf_path_array <<< "$(mf_path)"
+  tmux set -g '@MF_NAME' "${mf_path_array[3]}"
   tmux set -g '@MF_GIT' "$(mf_git)"
 }
  
@@ -33,7 +32,7 @@ mf_git()
   echo "${ICON} author/plugin"
 }
 
-mf_name()
+mf_path()
 {
   local PANE_PID=$(tmux display -p "#{pane_pid}")
   local SOCKET="/tmp/$(ls /tmp | grep -E "${PANE_PID}")"
@@ -48,7 +47,7 @@ mf_name()
     local FNAME="${PARENT_PROC}"
   fi
   
-  echo "${FPATH}"
+  echo "${ICON} ${FPATH} ${FNAME}"
 }
 
 main
