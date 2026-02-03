@@ -23,7 +23,6 @@ main()
 {
   tmux set -g '@MF_NAME' "$(mf_name)"
   tmux set -g '@MF_GIT' "$(mf_git)"
-  dump ">> $FPATH"
 }
 
 mf_git()
@@ -40,6 +39,7 @@ mf_name()
 
   if [[ "${SOCKET}" =~ ${PANE_PID} ]]; then # /tmp/nvim-XXXXX = nvim ... /tmp/ = no nvim socket 
     FPATH="$( nvim --server ${SOCKET} --remote-expr 'expand("%")' )"
+    dump ">> $FPATH"
     local ICON="$( yaml2item ".icons.sys.Document" $ICONS )"
     local FNAME="${FPATH##*/}"
   else
