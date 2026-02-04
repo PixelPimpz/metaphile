@@ -39,9 +39,10 @@ mf_path()
   local PANE_PID=$(tmux display -p "#{pane_pid}")
   local SOCKET="/tmp/$(ls /tmp | grep -E "${PANE_PID}")"
   local PARENT_PROC="$(ps -q "${PANE_PID}" o comm=)"
+  local MFROOT="$( tmux show -gqv @METAPHILEROOT )"
 
   if [[ "${SOCKET}" =~ ${PANE_PID} ]]; then # /tmp/nvim-XXXXX = nvim ... /tmp/ = no nvim socket 
-    local FPATH="$( nvim --server ${SOCKET} --remote-expr 'expand("%")' )"
+    local FPATH="${MFROOT}$( nvim --server ${SOCKET} --remote-expr 'expand("%")' )"
     local ICON="$( yaml2item ".icons.sys.Document" $ICONS )"
     local FNAME="${FPATH##*/}"
   else
