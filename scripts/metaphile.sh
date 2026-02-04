@@ -26,7 +26,7 @@ main()
   tmux set -g '@MF_NAME' "${mf_path_array[0]} ${mf_path_array[1]##*/}"
   tmux set -g '@MF_PATH' "${mf_path_array[1]}"
   tmux set -g '@MF_GIT' "$(mf_git)"
-  git rev-parse --show-toplevel --prefix "${mf_path_array[1]%/*}"
+  git rev-parse --prefix "${mf_path_array[1]%/*}"
 }
  
 mf_git()
