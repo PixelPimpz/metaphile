@@ -27,6 +27,7 @@ main()
   tmux set -g '@MF_PATH' "${mf_path_array[1]}"
   tmux set -g '@MF_GIT' "$(mf_git)"
   cd "${mf_path_array[1]%/*}"
+  dump "$PWD"
   git rev-parse --show-toplevel 
 }
  
