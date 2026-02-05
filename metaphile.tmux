@@ -1,6 +1,9 @@
 #!/usr/bin/env bash
 LOCAL_ROOT="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 tmux set -g '@METAPHILEROOT' "$LOCAL_ROOT"
+tmux set -u @MF_PATH
+tmux set -u @MF_NAME
+tmux set -u @MF_GIT
 ICONS="$(tmux show -gqv @ICONS)"
 SHARE="$( tmux show -gqv @CHER )"
 source "$SHARE/dump.fun"
