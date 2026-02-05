@@ -27,8 +27,10 @@ main()
   dump  "${mf_path_array[1]%/*}"
   if [[ $( git -C "${mf_path_array[1]%/*}" rev-parse --is-inside-work-tree ) ]]; then
     tmux set -g '@MF_GIT' "$(mf_git)"
+    dump ">> path is in a repo"
   else
     tmux set -g '@MF_PATH' "${mf_path_array[1]}"
+    dump ">> patrh is not in a repo"
   fi
 }
  
