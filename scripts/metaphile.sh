@@ -57,6 +57,7 @@ mf_path()
     local FNAME="$( nvim --server ${SOCKET} --remote-expr 'expand("%")' )"
     local ICON="$( yaml2item ".icons.sys.Document" $ICONS )"
   else
+    local FPATH="none"
     local ICON="$( yaml2item ".icons.app.$PARENT_PROC" $ICONS )"
     local FNAME="${PARENT_PROC}"
   fi
