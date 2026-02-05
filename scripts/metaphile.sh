@@ -21,9 +21,9 @@ source "$SHARE/yaml2item.fun"
 main()
 {
   read -a mf_path_array <<< "$(mf_path)"
-  local file="${mf_path_array[2]##*/}"
+  local file="${mf_path_array[2]}"
   local path="${mf_path_array[1]%/*}"
-  tmux set -g '@MF_NAME' "${mf_path_array[0]} ${path##*/}/$file"
+  tmux set -g '@MF_NAME' "${mf_path_array[0]} $file"
   if [[ $( git -C "$path" rev-parse --is-inside-work-tree ) ]]; then
     local git_dir=$(git -C "$path" rev-parse --show-toplevel )
     tmux set -g '@MF_GIT' "$(mf_git $git_dir)"
