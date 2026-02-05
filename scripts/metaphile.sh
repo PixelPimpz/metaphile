@@ -22,14 +22,12 @@ main()
 {
   read -a mf_path_array <<< "$(mf_path)"
 
-  tmux set -g '@MF_NAME' "${mf_path_array[0]} ${mf_path_array[1]##*/}"
+  tmux set -g '@MF_NAME' "${mf_path_array[2]}"
   if [[ $( git -C "${mf_path_array[1]%/*}" rev-parse --is-inside-work-tree ) ]]; then
     tmux set -g '@MF_GIT' "$(mf_git)"
-    dump ">> path is in a repo"
   else
     tmux set -u '@MF_GIT'
     tmux set -g '@MF_PATH' "${mf_path_array[1]}"
-    dump ">> patrh is not in a repo"
   fi
 }
  
@@ -48,8 +46,8 @@ mf_path()
 
   if [[ "${SOCKET}" =~ ${PANE_PID} ]]; then 
     local FPATH="$( nvim --server ${SOCKET} --remote-expr 'expand("%:p")' )"
+    local FNAME="$( nvim --server ${SOCKET} --remote-expr 'expand("%")' )"
     local ICON="$( yaml2item ".icons.sys.Document" $ICONS )"
-    local FNAME="${FPATH##*/}"
   else
     local ICON="$( yaml2item ".icons.app.$PARENT_PROC" $ICONS )"
     local FNAME="${PARENT_PROC}"
