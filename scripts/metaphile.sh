@@ -21,14 +21,16 @@ source "$SHARE/yaml2item.fun"
 main()
 {
   read -a mf_path_array <<< "$(mf_path)"
-
-  tmux set -g '@MF_NAME' "${mf_path_array[0]} ${mf_path_array[2]}"
+  local file="${mf_path_array[1]##*/}"
+  local path="${mf_path_array[1]%/*}"
+  tmux set -g '@MF_NAME' "${mf_path_array[0]} $file"
   if [[ $( git -C "${mf_path_array[1]%/*}" rev-parse --is-inside-work-tree ) ]]; then
     tmux set -g '@MF_GIT' "$(mf_git)"
   else
     tmux set -u '@MF_GIT'
-    tmux set -g '@MF_PATH' "${mf_path_array[1]}"
+    tmux set -g '@MF_PATH' "$path"
   fi
+  dump ">> $path"
 }
  
 mf_git()
