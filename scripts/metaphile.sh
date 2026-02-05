@@ -36,14 +36,6 @@ main()
   dump ">> file: $file"
   tmux refresh-client
 }
- 
-mf_git()
-{
-  local gitroot=$1
-  local repo="$( git -C $gitroot info | grep -E "\(push\)" | sed 's/^.*://;s/\.git .*$//' )"
-  local ICON=$( yaml2item ".icons.app.gh" $ICONS )
-  echo "${ICON} $repo"
-}
 
 mf_path()
 {
@@ -63,6 +55,14 @@ mf_path()
   fi
   
   echo "${ICON} ${FPATH} ${FNAME}"
+}
+
+mf_git()
+{
+  local gitroot=$1
+  local repo="$( git -C $gitroot info | grep -E "\(push\)" | sed 's/^.*://;s/\.git .*$//' )"
+  local ICON=$( yaml2item ".icons.app.gh" $ICONS )
+  echo "${ICON} $repo"
 }
 
 main
