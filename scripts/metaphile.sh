@@ -24,12 +24,14 @@ main()
   local file="${mf_path_array[1]##*/}"
   local path="${mf_path_array[1]%/*}"
   tmux set -g '@MF_NAME' "${mf_path_array[0]} ${path##*/}/$file"
-  if [[ $( git -C "${mf_path_array[1]%/*}" rev-parse --is-inside-work-tree ) ]]; then
+  if [[ $( git -C "$path" rev-parse --is-inside-work-tree ) ]]; then
+    local git_dir=$(git -C "$path" rev-parse --show-toplevel )
     tmux set -g '@MF_GIT' "$(mf_git)"
   else
     tmux set -u '@MF_GIT'
     tmux set -g '@MF_PATH' "$path"
   fi
+  dump ">> git_dir: $git_dir"
   dump ">> $path"
 }
  
