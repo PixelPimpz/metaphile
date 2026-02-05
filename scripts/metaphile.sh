@@ -27,7 +27,7 @@ main()
   tmux set -g '@MF_PATH' "${mf_path_array[1]}"
   tmux set -g '@MF_GIT' "$(mf_git)"
   dump "${mf_path_array[1]}"
-  tmux run "git ls-files --error-unmatch /home/lucifer/Projects/metaphile/scripts/metaphile.sh"
+  git ls-files --error-unmatch "${mf_path_array[1]}"
 }
  
 mf_git()
