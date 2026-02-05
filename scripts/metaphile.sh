@@ -26,7 +26,8 @@ main()
   tmux set -g '@MF_NAME' "${mf_path_array[0]} ${mf_path_array[1]##*/}"
   tmux set -g '@MF_PATH' "${mf_path_array[1]}"
   tmux set -g '@MF_GIT' "$(mf_git)"
-  git rev-parse --show-toplevel "${mf_path_array[1]}"
+  local gitrev=$( git rev-parse --show-toplevel "${mf_path_array[1]}" )
+  dump $gitrev
   #git ls-files --error-unmatch "${mf_path_array[1]}"
 }
  
