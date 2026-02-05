@@ -38,7 +38,7 @@ main()
 mf_git()
 {
   local gitroot=$1
-  local repo="$( git -C $gitroot info | grep -E "^origin  ")"
+  local repo="$( git -C $gitroot info | grep -E "^origin")"
   local ICON=$( yaml2item ".icons.app.gh" $ICONS )
   echo "${ICON} $repo"
 }
