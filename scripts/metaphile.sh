@@ -27,6 +27,7 @@ main()
   tmux set -g '@MF_PATH' "${mf_path_array[1]}"
   tmux set -g '@MF_GIT' "$(mf_git)"
   dump  "${mf_path_array[1]%/*}"
+  git -C "${mf_path_array[1]%/*}" --is-inside-work-tree
 }
  
 mf_git()
