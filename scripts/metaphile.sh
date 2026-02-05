@@ -23,7 +23,7 @@ main()
   read -a mf_path_array <<< "$(mf_path)"
   local file="${mf_path_array[1]##*/}"
   local path="${mf_path_array[1]%/*}"
-  tmux set -g '@MF_NAME' "${mf_path_array[0]} ${path##*/}$file"
+  tmux set -g '@MF_NAME' "${mf_path_array[0]} ${path##*/}/$file"
   if [[ $( git -C "${mf_path_array[1]%/*}" rev-parse --is-inside-work-tree ) ]]; then
     tmux set -g '@MF_GIT' "$(mf_git)"
   else
