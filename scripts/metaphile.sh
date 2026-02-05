@@ -38,7 +38,7 @@ main()
 mf_git()
 {
   local gitroot=$1
-  local repo="$( git -C $gitroot info | grep -E "\(push\)")"
+  local repo="$( git -C $gitroot info | grep -E "\(push\)" | sed 's/^.*://' )"
   local ICON=$( yaml2item ".icons.app.gh" $ICONS )
   echo "${ICON} $repo"
 }
