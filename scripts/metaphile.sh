@@ -34,6 +34,7 @@ main()
   dump ">> git_dir: $git_dir"
   dump ">> path: $path"
   dump ">> file: $file"
+  tmux refresh-client
 }
  
 mf_git()
