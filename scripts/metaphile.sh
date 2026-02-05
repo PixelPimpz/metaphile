@@ -14,7 +14,6 @@ LOCAL_ROOT="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 LOCAL_ROOT="${LOCAL_ROOT%/*}"
 SHARE=$( tmux show -gqv @CHER )
 ICONS=$( tmux show -gqv @ICONS )
-FPATH=
 source "$SHARE/dump.fun"
 source "$SHARE/fatal.fun"
 source "$SHARE/yaml2item.fun"
@@ -28,6 +27,7 @@ main()
   if [[ $( git -C "${mf_path_array[1]%/*}" rev-parse --is-inside-work-tree ) ]]; then
     tmux set -g '@MF_GIT' "$(mf_git)"
     dump ">> path is in a repo"
+
   else
     tmux set -g '@MF_PATH' "${mf_path_array[1]}"
     dump ">> patrh is not in a repo"
@@ -36,7 +36,7 @@ main()
  
 mf_git()
 {
-  local ICON=$( -yaml2item ".icons.app.gh" $ICONS )
+  local ICON=$( yaml2item ".icons.app.gh" $ICONS )
   echo "${ICON} author/plugin"
 }
 
