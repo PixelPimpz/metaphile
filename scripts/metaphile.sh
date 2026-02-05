@@ -26,7 +26,7 @@ main()
   tmux set -g '@MF_NAME' "${mf_path_array[0]} ${path##*/}/$file"
   if [[ $( git -C "$path" rev-parse --is-inside-work-tree ) ]]; then
     local git_dir=$(git -C "$path" rev-parse --show-toplevel )
-    tmux set -g '@MF_GIT' "$(mf_git)"
+    tmux set -g '@MF_GIT' "$(mf_git $git_dir)"
   else
     tmux set -u '@MF_GIT'
     tmux set -g '@MF_PATH' "$path"
@@ -37,8 +37,10 @@ main()
  
 mf_git()
 {
+  local gitroot=$1
+  local repo="$( git -C $gitroot info | grep -E "^origin" )"
   local ICON=$( yaml2item ".icons.app.gh" $ICONS )
-  echo "${ICON} author/plugin"
+  echo "${ICON} $repo"
 }
 
 mf_path()
