@@ -26,9 +26,7 @@ main()
   tmux set -g '@MF_NAME' "${mf_path_array[0]} ${mf_path_array[1]##*/}"
   tmux set -g '@MF_PATH' "${mf_path_array[1]}"
   tmux set -g '@MF_GIT' "$(mf_git)"
-  cd "${mf_path_array[1]%/*}"
-  dump ">> $PWD"
-  git rev-parse --show-toplevel 
+  
 }
  
 mf_git()
@@ -44,8 +42,8 @@ mf_path()
   local PARENT_PROC="$(ps -q "${PANE_PID}" o comm=)"
   local MFROOT="$( tmux show -gqv @METAPHILEROOT )"
 
-  if [[ "${SOCKET}" =~ ${PANE_PID} ]]; then # /tmp/nvim-XXXXX = nvim ... /tmp/ = no nvim socket 
-    local FPATH="$( nvim --server ${SOCKET} --remote-expr 'expand("%")' )"
+  if [[ "${SOCKET}" =~ ${PANE_PID} ]]; then 
+    local FPATH="$( nvim --server ${SOCKET} --remote-expr 'expand("%:p")' )"
     local ICON="$( yaml2item ".icons.sys.Document" $ICONS )"
     local FNAME="${FPATH##*/}"
   else
