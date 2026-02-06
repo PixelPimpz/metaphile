@@ -4,7 +4,7 @@ tmux set -g '@METAPHILEROOT' "$LOCAL_ROOT"
 SHARE="$(tmux show -gqv @CHER )"
 source "$SHARE/dump.fun"
 source "$SHARE/fatal.fun"
-source "$METAPHILEROOT/conf/hooks.conf" || fatal "hooks failed to load"
+tmux run-shell "$METAPHILEROOT/conf/hooks" || fatal "hooks failed to load"
 tmux set -u @MF_PATH
 tmux set -u @MF_NAME
 tmux set -u @MF_GIT
