@@ -29,7 +29,6 @@ main()
     local git_dir=$(git -C "$path" rev-parse --show-toplevel )
     tmux set -g '@MF_GIT' "$(mf_git $git_dir)"
   else
-    tmux set -u '@MF_GIT'
     tmux set -g '@MF_PATH' "$path"
   fi
   dump ">> git_dir: $git_dir"
