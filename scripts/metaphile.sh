@@ -10,8 +10,6 @@
 # icon in section 1.1 and the NeoVim logo icon + the file name in section 1.2
 # add completed sections to somewhere
 # -----------------------------------------------------------------------------
-#LOCAL_ROOT="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
-#LOCAL_ROOT="${LOCAL_ROOT%/*}"
 SHARE=$( tmux show -gqv @CHER )
 ICONS=$( tmux show -gqv @ICONS )
 source "$SHARE/dump.fun"
