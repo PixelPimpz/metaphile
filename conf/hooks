@@ -2,10 +2,10 @@
 main() 
 {
   local script="$1/scripts/metaphile.sh"
-  tmux set-hook -g client-focus-out[0] 'run-shell "$script" \; refresh-client' 
-  tmux set-hook -g client-focus-in[0] 'run-shell "$script" \; refresh-client'
-  tmux set-hook -g pane-focus-in[0] 'run-shell "$script" \; refresh-client' 
-  tmux set-hook -g pane-exited[0] 'run-shell "$script" \; refresh-client'
-  tmux set-hook -g session-window-changed[0] 'run-shell "$script" \; refresh-client'
+  tmux set-hook -g client-focus-out[0] 'run-shell "$script \; refresh-client"' 
+  tmux set-hook -g client-focus-in[0] 'run-shell "$script \; refresh-client"'
+  tmux set-hook -g pane-focus-in[0] 'run-shell "$script \; refresh-client"' 
+  tmux set-hook -g pane-exited[0] 'run-shell "$script \; refresh-client"'
+  tmux set-hook -g session-window-changed[0] 'run-shell "$script \; refresh-client"'
 }
 main "$@"
