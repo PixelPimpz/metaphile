@@ -7,7 +7,7 @@ source "$SHARE/yaml2item.fun"
 
 main()
 {
-  read -r -a mf_path_array <<< "$(mf_path)"
+  IFS=":"; read -r -a mf_path_array <<< "$(mf_path)"
   local icon="${mf_path_array[0]}"
   local file="${mf_path_array[2]}"
   local path="${mf_path_array[1]}"
@@ -41,7 +41,7 @@ mf_path()
     local FNAME="${PARENT_PROC}"
   fi
   
-  echo "${ICON} ${FPATH} ${FNAME}"
+  echo "${ICON}:${FPATH}:${FNAME}"
 }
 
 mf_git()
