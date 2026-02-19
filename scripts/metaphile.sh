@@ -1,15 +1,4 @@
-#!/usr/bin/env bash
-# -----------------------------------------------------------------------------
-# first gather context info: are we in ther shell, neovim or something else?
-#   if not in nvim, gather the current shell command and the pwd with 
-#   "tmux pane-current-path" 
-#   put the current-command's icon and the cwd into section 1.1
-#   put the current-command and it's icon into section 1.2
-# if nvim is running and the open buffer is in a directory tree with a ".git"
-# folder at its root, then run gitInfo and put the remote repo and a github 
-# icon in section 1.1 and the NeoVim logo icon + the file name in section 1.2
-# add completed sections to somewhere
-# -----------------------------------------------------------------------------
+#!/usr/bin# 
 SHARE=$( tmux show -gqv @CHER )
 ICONS=$( tmux show -gqv @ICONS )
 source "$SHARE/dump.fun"
@@ -21,7 +10,7 @@ main()
   read -a mf_path_array <<< "$(mf_path)"
   local icon="${mf_path_array[0]}"
   local file="${mf_path_array[2]}"
-  local path="${mf_path_array[1]%/*}"
+  local path="${mf_path_array[1]}"
   tmux set -g '@MF_NAME' "${icon} ${file}"
   if [[ $( git -C "$path" rev-parse --is-inside-work-tree ) ]]; then
     local git_dir=$(git -C "$path" rev-parse --show-toplevel )
