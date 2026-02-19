@@ -1,4 +1,4 @@
-#!/usr/bin# 
+#!/usr/bin/env bash 
 SHARE=$( tmux show -gqv @CHER )
 ICONS=$( tmux show -gqv @ICONS )
 source "$SHARE/dump.fun"
