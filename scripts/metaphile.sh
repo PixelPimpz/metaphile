@@ -7,7 +7,7 @@ source "$SHARE/yaml2item.fun"
 
 main()
 {
-  read -a mf_path_array <<< "$(mf_path)"
+  read -r -a mf_path_array <<< "$(mf_path)"
   local icon="${mf_path_array[0]}"
   local file="${mf_path_array[2]}"
   local path="${mf_path_array[1]}"
