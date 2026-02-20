@@ -19,6 +19,7 @@ main()
     tmux set -g '@MF_PATH' "$path"
   fi
   dump ">> git_dir: $git_dir"
+  dump ">>> ${path%/*}"
   dump ">> path: $path"
   dump ">> file: $file"
   tmux refresh-client
