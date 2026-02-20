@@ -13,7 +13,7 @@ main()
   local path="${mf_path_array[1]}"
   tmux set -g '@MF_NAME' "${icon} ${file}"
   if [[ $( git -C "${path%/*}" rev-parse --is-inside-work-tree ) ]]; then
-    local git_dir=$(git -C "$path" rev-parse --show-toplevel )
+    local git_dir=$(git -C "${path%/*}" rev-parse --show-toplevel )
     tmux set -g '@MF_GIT' "$(mf_git $git_dir)"
   fi
   tmux set -g '@MF_PATH' "$path"
