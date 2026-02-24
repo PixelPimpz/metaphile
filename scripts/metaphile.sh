@@ -17,7 +17,7 @@ main()
     local git_dir=$(git -C "${path%/*}" rev-parse --show-toplevel )
     tmux set -g '@MF_GIT' "$(mf_git $git_dir)"
   fi
-  tmux set -g '@MF_PATH' "$path"
+  tmux set -g '@MF_PATH' "${path}"
   tmux refresh-client
 }
 
@@ -31,7 +31,8 @@ mf_info()
   if [[ "${SOCKET}" =~ ${PANE_PID} ]]; then 
     local FPATH="$( nvim --server ${SOCKET} --remote-expr 'expand("%:p")' )"
     local FNAME="$( nvim --server ${SOCKET} --remote-expr 'expand("%")' )"
-    local ICON=$( yaml2item ".icons.sys.Document"MODIFIED="$( nvim --server ${SOCKET} --remote-expr '&modified' )"
+    local ICON=$( yaml2item ".icons.sys.Document" )
+    MODIFIED="$( nvim --server ${SOCKET} --remote-expr '&modified' )"
   else
     local ICON=$( yaml2item ".icons.app.$PARENT_PROC" $ICONS )
     local FNAME="${PARENT_PROC}"
