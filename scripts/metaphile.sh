@@ -17,7 +17,7 @@ main()
     local git_dir=$(git -C "${path%/*}" rev-parse --show-toplevel )
     tmux set -g '@MF_GIT' "$(mf_git $git_dir)"
   fi
-  tmux set -g '@MF_PATH' "${path#$HOME}"
+  tmux set -g '@MF_PATH' "${path#${HOME}}"
   tmux refresh-client
 }
 
