@@ -18,7 +18,8 @@ main()
     tmux set -g '@MF_GIT' "$(mf_git $git_dir)"
   fi
   path="${path%/*}"
-  tmux set -g '@MF_PATH' "${path/#!HOME}"
+  local home="$HOME"
+  tmux set -g '@MF_PATH' "${path/#!home}"
   tmux refresh-client
 }
 
