@@ -20,6 +20,7 @@ main()
   path="${path%/*}"
   local home="$HOME"
   tmux set -g '@MF_PATH' "${path}"
+  [[ ! "$(tmux show -gq @VIRGIN)" ]] && tmux source "~/.tmux/tmux.conf" \; set -g @VIRGIN ""   
   tmux refresh-client
 }
 
