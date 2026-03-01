@@ -1,13 +1,9 @@
 #!/usr/bin/env bash
-main() 
-{
-  local mf_root="$1"
-  tmux set-hook -g client-focus-out[0] run-shell "$mf_root/scripts/metaphile.sh" 
-  tmux set-hook -g client-focus-in[0] 'run-shell "$mf_root/scripts/metaphile.sh"'
-  tmux set-hook -g client-session-changed[0] 'run-shell "$mf_root/scripts/metaphile.sh"'
-  tmux set-hook -g after-select-pane[0] 'run-shell "$mf_root/scripts/metaphile.sh"'
-  tmux set-hook -g pane-focus-in[0] 'run-shell "$mf_root/scripts/metaphile.sh"' 
-  tmux set-hook -g pane-exited[0] 'run-shell "$mf_root/scripts/metaphile.sh"'
-  tmux set-hook -g session-window-changed[0] 'run-shell "$mf_root/scripts/metaphile.sh"'
-}
-main "$@" 
+LOCAL_ROOT=$1
+tmux set-hook -g client-focus-out[0] run-shell "$LOCAL_ROOT/scripts/metaphile.sh" 
+tmux set-hook -g client-focus-in[0] run-shell "$LOCAL_ROOT/scripts/metaphile.sh"
+tmux set-hook -g client-session-changed[0] run-shell "$LOCAL_ROOT/scripts/metaphile.sh"
+tmux set-hook -g after-select-pane[0] run-shell "$LOCAL_ROOT/scripts/metaphile.sh"
+tmux set-hook -g pane-focus-in[0] run-shell "$LOCAL_ROOT/scripts/metaphile.sh" 
+tmux set-hook -g pane-exited[0] run-shell "$LOCAL_ROOT/scripts/metaphile.sh"
+tmux set-hook -g session-window-changed[0] run-shell "$LOCAL_ROOT/scripts/metaphile.sh"
