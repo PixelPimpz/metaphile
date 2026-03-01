@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 LOCAL_ROOT="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+tmux set-hook -gu client-focus-out[0] run-shell "$LOCAL_ROOT/scripts/metaphile.sh" 
 tmux set-hook -g client-focus-out[0] run-shell "$LOCAL_ROOT/scripts/metaphile.sh" 
 tmux set-hook -g client-focus-in[0] run-shell "$LOCAL_ROOT/scripts/metaphile.sh"
 tmux set-hook -g client-session-changed[0] run-shell "$LOCAL_ROOT/scripts/metaphile.sh"
