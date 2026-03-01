@@ -5,8 +5,8 @@ SHARE="$(tmux show -gqv @CHER )"
 source "$SHARE/fun/dump.fun"
 source "$SHARE/fun/fatal.fun"
 tmux run-shell "$LOCAL_ROOT/scripts/hooks $LOCAL_ROOT" 
-tmux set -u @MF_PATH
-tmux set -u @MF_NAME
-tmux set -u @MF_GIT
+tmux set -gu @MF_PATH
+tmux set -gu @MF_NAME
+tmux set -gu @MF_GIT
 tmux bind M-m run-shell "$LOCAL_ROOT/scripts/metaphile.sh"
 tmux run-shell "$LOCAL_ROOT/scripts/metaphile.sh"

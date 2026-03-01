@@ -1,9 +1,9 @@
 #!/usr/bin/env bash 
 SHARE=$( tmux show -gqv @CHER )
 ICONS=$( tmux show -gqv @ICONS )
-source "$SHARE/dump.fun"
-source "$SHARE/fatal.fun"
-source "$SHARE/yaml2item.fun"
+source "$SHARE/fun/dump.fun"
+source "$SHARE/fun/fatal.fun"
+source "$SHARE/fun/yaml2item.fun"
 
 main()
 {
