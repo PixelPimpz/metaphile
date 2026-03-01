@@ -19,7 +19,7 @@ main()
   fi
   path="${path%/*}"
   local home="$HOME"
-  tmux set -g '@MF_PATH' "${path#!home/}"
+  tmux set -g '@MF_PATH' "${path}"
   tmux refresh-client
 }
 
