@@ -4,7 +4,7 @@ tmux set -g '@MF_ROOT' "$LOCAL_ROOT"
 SHARE="$(tmux show -gqv @CHER )"
 source "$SHARE/fun/dump.fun"
 source "$SHARE/fun/fatal.fun"
-$LOCAL_ROOT/scripts/hooks "$LOCAL_ROOT" 
+$LOCAL_ROOT/scripts/hooks 
 tmux set -gu @MF_PATH
 tmux set -gu @MF_NAME
 tmux set -gu @MF_GIT
