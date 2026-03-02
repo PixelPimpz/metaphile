@@ -7,7 +7,7 @@ source "$SHARE/fun/yaml2item.fun"
 
 main()
 {
-  dump "this is a test message"
+  dump "this is a test message" -a
   IFS=":"; read -r -a mf_info_array <<< "$(mf_info)"
   local icon="${mf_info_array[0]}"
   local file="${mf_info_array[2]}"
