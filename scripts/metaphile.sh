@@ -1,6 +1,7 @@
 #!/usr/bin/env bash 
 SHARE=$( tmux show -gqv @CHER )
 ICONS=$( tmux show -gqv @ICONS )
+MODSTAT=(
 source "$SHARE/fun/dump.fun"
 source "$SHARE/fun/fatal.fun"
 source "$SHARE/fun/yaml2item.fun"
@@ -21,7 +22,7 @@ main()
   path="${path%/*}"
   local home="$HOME"
   tmux set -g '@MF_PATH' "${path}"
-  [[ ! "$(tmux show -gq @VIRGIN)" ]] && tmux source "~/.tmux/tmux.conf" \; set -g @VIRGIN ""   
+  [[ ! "$(tmux show -g @VIRGIN)" ]] && tmux source "~/.tmux/tmux.conf" \; set -g @VIRGIN ""   
   tmux refresh-client
 }
 
@@ -36,7 +37,7 @@ mf_info()
     local FPATH="$( nvim --server ${SOCKET} --remote-expr 'expand("%:p")' )"
     local FNAME="$( nvim --server ${SOCKET} --remote-expr 'expand("%")' )"
     local ICON=$( yaml2item ".icons.sys.Document" $ICONS )
-    MODIFIED="$( nvim --server ${SOCKET} --remote-expr '&modified' )"
+    local MODIFIED="$( nvim --server ${SOCKET} --remote-expr '&modified' )"
   else
     local ICON=$( yaml2item ".icons.app.$PARENT_PROC" $ICONS )
     local FNAME="${PARENT_PROC}"
