@@ -35,7 +35,7 @@ mf_info()
 
   if [[ "${SOCKET}" =~ ${PANE_PID} ]]; then 
     local FPATH="$( nvim --server ${SOCKET} --remote-expr 'expand("%")' )"
-    local FNAME="$( nvim --server ${SOCKET} --remote-expr 'expand("%:p")' )"
+    local FNAME="$( nvim --server ${SOCKET} --remote-expr 'expand("%")' )"
     local ICON=$( yaml2item ".icons.sys.Document" $ICONS )
     local MODIFIED="$( nvim --server ${SOCKET} --remote-expr '&modified' )"
   else
