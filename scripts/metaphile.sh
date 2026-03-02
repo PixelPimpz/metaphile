@@ -22,7 +22,7 @@ main()
   path="${path%/*}"
   local home="$HOME"
   tmux set -g '@MF_PATH' "${path}"
-  [[ ! "$(tmux show -g @VIRGIN)" ]] && tmux source "~/.tmux/tmux.conf" \; set -g @VIRGIN ""   
+  [[ ! "$(tmux show -g @VIRGIN 2>/dev/null )" ]] && tmux source "~/.tmux/tmux.conf" \; set -g @VIRGIN ""   
   tmux refresh-client
 }
 
@@ -34,8 +34,8 @@ mf_info()
   local MFROOT="$( tmux show -gqv @METAPHILEROOT )"
 
   if [[ "${SOCKET}" =~ ${PANE_PID} ]]; then 
-    local FPATH="$( nvim --server ${SOCKET} --remote-expr 'expand("%:p")' )"
-    local FNAME="$( nvim --server ${SOCKET} --remote-expr 'expand("%")' )"
+    local FPATH="$( nvim --server ${SOCKET} --remote-expr 'expand("%")' )"
+    local FNAME="$( nvim --server ${SOCKET} --remote-expr 'expand("%:p")' )"
     local ICON=$( yaml2item ".icons.sys.Document" $ICONS )
     local MODIFIED="$( nvim --server ${SOCKET} --remote-expr '&modified' )"
   else
