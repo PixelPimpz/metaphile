@@ -7,7 +7,6 @@ source "$SHARE/fun/yaml2item.fun"
 
 main()
 {
-  dump "this is a test message" -a
   IFS=":"; read -r -a mf_info_array <<< "$(mf_info)"
   local icon="${mf_info_array[0]}"
   local file="${mf_info_array[2]}"
@@ -22,6 +21,7 @@ main()
   local home="$HOME"
   tmux set -g '@MF_PATH' "${path}"
   [[ ! "$(tmux show -gq @VIRGIN)" ]] && tmux source "~/.tmux/tmux.conf" \; set -g @VIRGIN ""   
+  dump "$mod" -a
   tmux refresh-client
 }
 
