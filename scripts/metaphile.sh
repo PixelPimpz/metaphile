@@ -12,6 +12,7 @@ main()
   local file="${mf_info_array[2]}"
   local path="${mf_info_array[1]}"
   local mod="${mf_info_array[3]}"
+  tmux set -g '@MF_MOD' "${mod}"
   tmux set -g '@MF_NAME' "${icon} ${file}"
   if [[ $( git -C "${path%/*}" rev-parse --is-inside-work-tree ) ]]; then
     local git_dir=$(git -C "${path%/*}" rev-parse --show-toplevel )
@@ -21,7 +22,6 @@ main()
   local home="$HOME"
   tmux set -g '@MF_PATH' "${path}"
   [[ ! "$(tmux show -gq @VIRGIN)" ]] && tmux source "~/.tmux/tmux.conf" \; set -g @VIRGIN ""   
-  dump "$mod" -a
   tmux refresh-client
 }
 
