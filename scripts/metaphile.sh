@@ -50,7 +50,7 @@ mf_git()
   local gitroot=$1
   local repo="$( git -C $gitroot info | grep -E "\(push\)" | sed 's/^.*://;s/\.git .*$//' )"
   local ICON=$( yaml2item ".icons.app.gh" $ICONS )
-  echo "${ICON} $repo"
+  [[ "$repo" ]] && echo "${ICON} $repo"
 }
 
 main
