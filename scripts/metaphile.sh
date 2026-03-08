@@ -1,7 +1,6 @@
 #!/usr/bin/env bash 
 SHARE=$( tmux show -gqv @CHER )
 ICONS=$( tmux show -gqv @ICONS )
-MODSTAT=(
 source "$SHARE/fun/dump.fun"
 source "$SHARE/fun/fatal.fun"
 source "$SHARE/fun/yaml2item.fun"
