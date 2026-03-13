@@ -22,7 +22,7 @@ main()
   local home="$HOME"
   tmux set -g '@MF_PATH' "${path}"
   [[ ! "$(tmux show -g @VIRGIN 2>/dev/null )" ]] && tmux source "~/.tmux/tmux.conf" \; set -g @VIRGIN ""   
-  tmux refresh-client
+  tmux refresh-client -S
 }
 
 mf_info()
